@@ -18,38 +18,34 @@
                     <li class=""><a href="Catalog.php"><span>Module Danh mục</span></a></li>
                 </ul>
             </li>
-            <li class="">
-                <a class="glyphicons table" href="Introduction.php"><i></i><span>Giới thiệu chung</span></a>
-            </li>
-
-            <li class="">
-                <a class="glyphicons table" href="Schedule.php"><i></i><span>Điều lệ hội</span></a>
-            </li>
             <li class="hasSubmenu">
                 <a data-toggle="collapse" class="glyphicons show_thumbnails_with_lines"
-                   href="#group_forms"><i></i><span>Danh sách chi hội</span></a>
+                   href="#intro_forms"><i></i><span>Giới thiệu</span></a>
+                <ul class="collapse" id="intro_forms">
+                    <li class=""><a href="Introduction.php"><i></i><span>Giới thiệu chung</span></a></li>
+                    <li class=""><a href="Schedule.php"><i></i><span>Điều lệ hội</span></a></li>
+                    <li class=""><a href="Association.php"><span>Danh sách ban chấp hành</span></a></li>
+
+                </ul>
+            </li>
+
+            <li class="hasSubmenu">
+                <a data-toggle="collapse" class="glyphicons show_thumbnails_with_lines"
+                   href="#group_forms"><i></i><span>Hội viên</span></a>
                 <ul class="collapse" id="group_forms">
-                    <li class=""><a href="GroupList.php"><span>Danh sách chi hội</span></a></li>
                     <li class=""><a href="GroupListAdd.php"><span>Thêm chi hội</span></a></li>
-
+                    <li class=""><a href="GroupList.php"><span>Danh sách chi hội</span></a></li>
+                    <li class=""><a href="Member.php"><span>Hội viên</span></a></li>
                 </ul>
             </li>
             <li class="hasSubmenu">
                 <a data-toggle="collapse" class="glyphicons show_thumbnails_with_lines"
-                   href="#photocat_forms"><i></i><span>Danh mục ảnh</span></a>
+                   href="#photocat_forms"><i></i><span>Thư viện ảnh</span></a>
                 <ul class="collapse" id="photocat_forms">
-                    <li class=""><a href="PhotoCategory.php"><span>Danh mục ảnh</span></a></li>
                     <li class=""><a href="PhotoCategoryAdd.php"><span>Thêm danh mục ảnh</span></a></li>
-
-                </ul>
-            </li>
-            <li class="hasSubmenu">
-                <a data-toggle="collapse" class="glyphicons show_thumbnails_with_lines"
-                   href="#photogalery_forms"><i></i><span>Thư viện ảnh</span></a>
-                <ul class="collapse" id="photogalery_forms">
+                    <li class=""><a href="PhotoCategory.php"><span>Danh mục ảnh</span></a></li>
                     <li class=""><a href="PhotoGallery.php"><span>Thư viện ảnh</span></a></li>
                     <li class=""><a href="PhotoGalleryAdd.php"><span>Thêm thư viện ảnh</span></a></li>
-
                 </ul>
             </li>
             <li class="hasSubmenu">
@@ -61,20 +57,9 @@
 
                 </ul>
             </li>
-            <li class="hasSubmenu">
-                <a data-toggle="collapse" class="glyphicons show_thumbnails_with_lines"
-                   href="#member_forms"><i></i><span>Thành viên</span></a>
-                <ul class="collapse" id="member_forms">
-                    <li class=""><a href="Member.php"><span>Danh sách thành viên</span></a></li>
-                    <li class=""><a href="Association.php"><span>Danh sách ban chấp hành</span></a></li>
-
-                </ul>
-            </li>
             <li class="">
                 <a class="glyphicons table" href="FaqsList.php"><i></i><span>Câu hỏi - Câu trả lời</span></a>
             </li>
-            <li class="glyphicons calendar"><a href="calendar.html?lang=en"><i></i><span>Calendar</span></a></li>
-            <li class="glyphicons user"><a href="login.html?lang=en"><i></i><span>Login</span></a></li>
         </ul>
         <ul>
             <li class="heading"><span>Sections</span></li>
