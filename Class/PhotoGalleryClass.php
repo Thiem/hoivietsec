@@ -21,6 +21,7 @@ class Class_PhotoGalleryClass
     public $page;
     public $start;
     public $display;
+    public $catId;
 
     public function listPhotoGallery()
     { // ket noi 2 bang PhotoCat va Photogallery
@@ -50,6 +51,40 @@ class Class_PhotoGalleryClass
         }
     }
 
+    public function showPhoto(){
+        $sql = "select photo_img from photo_gallery where photo_status = 1 and photo_cat_id = ".$this->photoCategoryId;
+        $query = mysql_query($sql);
+        $select = array();
+        while ($row = mysql_fetch_object($query)) {
+            $select[] = $row;
+        }
+        if (count($select) > 0) {
+            return $select;
+        } else {
+            return null;
+        }
+    }
+
+    public function listPhotoGalleryId()
+    { // lay theo danh mục ảnh cua tung id
+            $sql = "select photo_id, photo_name,  photo_gallery.photo_cat_id, photo_number, photo_status, photo_img, photo_cat_title, photo_cat_number, photo_cat_avatar, photo_cat_status
+        from  photo_gallery
+        inner join photo_category
+        on photo_gallery.photo_cat_id = photo_category.photo_cat_id where photo_gallery.photo_cat_id = '".$this->catId."'
+        order by photo_number asc limit " . $this->start . "," . $this->display;
+//echo $sql;
+//        die;
+        $query = mysql_query($sql);
+        $select = array();
+        while ($row = mysql_fetch_object($query)) {
+            $select[] = $row;
+        }
+        if (count($select) > 0) {
+            return $select;
+        } else {
+            return null;
+        }
+    }
     public function addPhotoGallery()
     {
         $sql = "insert into photo_gallery (photo_name, photo_cat_id, photo_number, photo_status, photo_img) value ('" . $this->photoGalleryName . "', '" . $this->photoCategoryId . "', '" . $this->photoGalleryNumber . "', '" . $this->photoGalleryStatus . "', '" . $this->photoGalleryImg . "')";
@@ -72,6 +107,13 @@ class Class_PhotoGalleryClass
         on photo_gallery.photo_cat_id = photo_category.photo_cat_id
         order by photo_cat_number asc";
         }
+        $query = mysql_query($sql);
+        $row = mysql_fetch_array($query, MYSQL_NUM);
+        return $row[0];
+    }
+
+    public function countShowRow(){
+        $sql ="select count(photo_id) from photo_gallery where photo_cat_id = ".$this->photoCategoryId;
         $query = mysql_query($sql);
         $row = mysql_fetch_array($query, MYSQL_NUM);
         return $row[0];

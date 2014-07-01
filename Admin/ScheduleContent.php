@@ -17,7 +17,6 @@
         <form name="formNews" id="formNews" action="ScheduleAction.php" method="post"
               enctype="multipart/form-data">
             <?php
-            include_once("../Class/ScheduleClass.php");
             $schedule = new Class_ScheduleClass();
             $list = $schedule->getSchedule();
             ?>
@@ -32,15 +31,8 @@
                 </div>
                 <div class="form-group width">
                     <label>Trạng thái đăng trang chủ: </label>
-                    <select class="form-control" name="status" style="width: 150px">
-                        <option value="1"
-                                <?php if ($list['schedule_status'] == 1){ ?>selected="selected" <?php } ?>>Đăng
-                        </option>
-                        <option value="0"
-                                <?php if ($list['schedule_status'] == 0){ ?>selected="selected" <?php } ?>>Không
-                            đăng
-                        </option>
-                    </select>
+                    <input type="checkbox" value="1"
+                           <?php if ($list['schedule_status'] == 1){ ?>checked="checked" <?php } ?> name="status"/>
                 </div>
                 <div>
                     <input type="submit" value="Sủa điều lệ chung"/>

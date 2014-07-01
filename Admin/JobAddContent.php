@@ -1,4 +1,3 @@
-<?php include_once("../Class/GroupListClass.php"); ?>
 <div id="content">
     <ul class="breadcrumb">
         <li><a href="Index.php" class="glyphicons home"><i></i>Trang quản trị</a></li>
@@ -17,7 +16,7 @@
         <div class="separator"></div>
     </div>
     <div class="form-news">
-        <form name="FaqEditForm" id="FaqEditForm" action="JobAddAction.php?id=<?php echo $_REQUEST['id'] ?>"
+        <form name="JobForm" id="JobForm" action="JobAddAction.php"
               method="post" enctype="multipart/form-data" accept-charset="utf-8">
             <div class="form">
                 <div class="form-group ">
@@ -34,13 +33,8 @@
                         </option>
                     </select>
                 </div><div class="form-group width">
-                    <label>Trạng thái đăng trang chủ: </label>
-                    <select class="form-control" name="data[Job][status]" style="width: 150px">
-                        <option value="1">Đăng
-                        </option>
-                        <option value="0">Không đăng
-                        </option>
-                    </select>
+                    <label for="status">Trạng thái đăng trang chủ:
+                    <input type="checkbox" name="data[Job][status]" value="1" id="status"/></label>
                 </div>
                 <div>
                     <input type="submit" value="Thêm mới chi hội"/>

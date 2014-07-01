@@ -6,6 +6,11 @@ $job = new Class_JobClass();
 $job->jobId = $_REQUEST['id'];
 $job->jobName = $val['Job']['name'];
 $job->jobNumber = $val['Job']['number'];
-$job->jobStatus = $val['Job']['status'];
+if ($val['Job']['status'] == 1) {
+    $job->jobStatus = 1;
+} else {
+    $job->jobStatus = 0;
+}
+
 $job->editGroupList();
 header("location: Job.php");

@@ -1,4 +1,3 @@
-<?php include_once("../Class/FaqsClass.php"); ?>
 <div id="content">
     <ul class="breadcrumb">
         <li><a href="Index.php" class="glyphicons home"><i></i>Trang quản trị</a></li>
@@ -60,11 +59,13 @@
                 </div>
 
                 <div class="form-group width">
-                    <label>Trạng thái đăng trang chủ: </label>
-                    <select class="form-control" name="data[Question][status]" style="width: 150px">
-                        <option value="1" <?php if ($row['faq_status'] == 1){?>selected="selected" <?php }?>>Đăng</option>
-                        <option value="0" <?php if ($row['faq_status'] == 0){?>selected="selected" <?php }?>>Không đăng</option>
-                    </select>
+                    <label for="Status">Trạng thái đăng trang chủ:
+                    <input type="checkbox" value="1" name="data[Question][status]" <?php if ($row['faq_status'] == 1){?>checked="checked" <?php }?> id="Status"/></label>
+                </div>
+                <div class="form-group width">
+                    <label for="number">Số thự tự hiển thị:</label>
+<!--                        <input type="checkbox" value="1" name="data[Question][status]" --><?php //if ($row['faq_status'] == 1){?><!--checked="checked" --><?php //}?><!-- id="Status"/>-->
+                    <input type="text" name="data[Question][number]" id="number" value="<?php echo $row['faq_number']?>" class="form-control"/>
                 </div>
                 <div>
                     <input type="submit" value="Lưu kết quả "/>

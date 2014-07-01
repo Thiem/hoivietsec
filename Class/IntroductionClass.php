@@ -19,6 +19,14 @@ class Class_IntroductionClass
             return $row;
         }
     }
+    public function showIntroduction()
+    {
+        $sql = "select intro_status, intro_text from introduction where intro_status =1";
+        $query = mysql_query($sql);
+        while ($row = mysql_fetch_array($query)) {
+            return $row;
+        }
+    }
     public function editIntroduction()
     {
         $sql = "update introduction set intro_text='".$this->introText."', intro_status = '".$this->introStatus."'";

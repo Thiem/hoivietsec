@@ -17,7 +17,6 @@
         <form name="formNews" id="formNews" action="IntroductionAction.php" method="post"
               enctype="multipart/form-data">
             <?php
-            include_once("../Class/IntroductionClass.php");
             $intro = new Class_IntroductionClass();
             $introOne = $intro->getIntroduction();
             ?>
@@ -32,15 +31,7 @@
                 </div>
                 <div class="form-group width">
                     <label>Trạng thái đăng trang chủ: </label>
-                    <select class="form-control" name="status" style="width: 150px">
-                        <option value="1"
-                                <?php if ($introOne['intro_status'] == 1){ ?>selected="selected" <?php } ?>>Đăng
-                        </option>
-                        <option value="0"
-                                <?php if ($introOne['intro_status'] == 0){ ?>selected="selected" <?php } ?>>Không
-                            đăng
-                        </option>
-                    </select>
+                    <input type="checkbox" value="1" <?php if ($introOne['intro_status'] == 1){?>checked="checked" <?php }?> name="status"/>
                 </div>
                 <div>
                     <input type="submit" value="Sửa giới thiệu chung"/>

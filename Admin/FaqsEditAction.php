@@ -11,6 +11,11 @@ $question->FaqContent = $val['Question']['content'];
 $question->FaqAnswer = $val['Question']['content1'];
 $question->FaqAnswerPeople = $val['Question']['answer'];
 $question->FaqDate = $val['Question']['date'];
-$question->FaqStatus = $val['Question']['status'];
+$question->FaqNumber = $val['Question']['number'];
+if ($val['Question']['status'] == 1) {
+    $question->FaqStatus = 1;
+} else {
+    $question->FaqStatus = 0;
+}
 $question->editFaq();
 header("location: FaqsList.php");

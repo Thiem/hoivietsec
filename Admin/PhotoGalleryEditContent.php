@@ -1,5 +1,5 @@
-<?php include_once("Class/PhotoGalleryClass.php");
-include_once("Class/PhotoCategoryClass.php");
+<?php //include_once("Class/PhotoGalleryClass.php");
+//include_once("Class/PhotoCategoryClass.php");
 ?>
 <div id="content">
     <ul class="breadcrumb">
@@ -19,7 +19,7 @@ include_once("Class/PhotoCategoryClass.php");
         <div class="separator"></div>
     </div>
     <div class="form-news">
-        <form name="PhotoGalleryEditForm" id="PhotoGalleryEditForm" action="PhotoGalleryEditAction.php?id=<?php echo $_REQUEST['id'] ?>"
+        <form name="PhotoGallery" id="PhotoGallery" action="PhotoGalleryEditAction.php?id=<?php echo $_REQUEST['id'] ?>"
               method="post"
               enctype="multipart/form-data" accept-charset="utf-8">
             <?php
@@ -58,35 +58,28 @@ include_once("Class/PhotoCategoryClass.php");
                 </div>
                 <div class="form-group width">
                     <label>Số thự tự hiển thị </label>
-                    <select class="form-control" name="data[PhotoGallery][number]" style="width: 150px">
-                        <option value="1" <?php if ($item['photo_number'] == 1){ ?>selected="selected" <?php } ?>>1
-                        </option>
-                        <option value="2" <?php if ($item['photo_number'] == 2){ ?>selected="selected" <?php } ?>>2
-                        </option>
-                    </select>
+                    <input type="text" name="data[PhotoGallery][number]" value="<?php echo $item['photo_number']?>" class="form-control"/>
                 </div>
                 <div class="form-group width">
-                    <label>Trạng thái đăng trang chủ: </label>
-                    <select class="form-control" name="data[PhotoGallery][status]" style="width: 150px">
-                        <option value="1" <?php if ($item['photo_status'] == 1){ ?>selected="selected" <?php } ?>>
-                            Đăng
-                        </option>
-                        <option value="0" <?php if ($item['photo_status'] == 0){ ?>selected="selected" <?php } ?>>
-                            Không đăng
-                        </option>
+                    <label for="status">Trạng thái đăng trang chủ:
+                        <input type="checkbox" value="1" name="data[PhotoGallery][status]" id="status" <?php if ($item['photo_status'] == 1){ ?>checked="checked"<?php } ?>/></label>
                     </select>
 
                 </div>
                 <div class="form-group width">
+                    <?php if ($item['photo_img'] == null){?>
+                        <img src="Image/no-image.jpg" alt="" style="height: 100px"/>
+                    <?php } else {?>
                     <label>Ảnh hiện tại: </label>
                     <br/>
                     <img src="Image/PhotoGallery/<?php echo $item['photo_img'] ?>" alt=""/>
+                    <?php }?>
                     <br/>
-                    <label>Thay thế ảnh khác:
+                    <label>Xóa ảnh cũ:
                         <input type="checkbox" name="data[PhotoGallery][Image]" value="1"/>
                     </label>
                     <br/>
-                    <label>Chọn ảnh: </label><input type="file" name="image" id="image"/>
+                    <label>Thay thế ảnh khác: </label><input type="file" name="image" id="image"/>
                     <input type="hidden" name="data[PhotoGallery][oldImage]" value="<?php echo $item['photo_img'] ?>"/>
 
                 </div>

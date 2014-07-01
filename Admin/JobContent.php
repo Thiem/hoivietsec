@@ -1,4 +1,3 @@
-<?php include_once("../Class/JobClass.php"); ?>
 <div id="content">
 <ul class="breadcrumb">
     <li><a href="Index.php" class="glyphicons home"><i></i>Trang quản trị</a></li>
@@ -19,11 +18,11 @@
 <div style="padding: 10px 0;" class="widget-body">
 <div role="grid" class="dataTables_wrapper form-inline" id="DataTables_Table_0_wrapper">
 <div class="row-fluid">
-    <div class="span6">
+    <div class="span3">
         <div id="DataTables_Table_0_length" class="dataTables_length"><label>
                 <select name="DataTables_Table_0_length" id="pagination"
                         aria-controls="DataTables_Table_0" style="width: 70px"
-                        onchange="Pagination()">
+                        onchange="Pagination()" class="form-control">
                     <?php if (isset($_REQUEST['rows'])) { ?>
                         <option value="10"
                                 <?php if ($_REQUEST['rows'] == 10){ ?>selected="selected" <?php } ?>>
@@ -51,19 +50,15 @@
     </div>
     <div class="span6">
         <form action="Job.php" method="post">
-            <div class="dataTables_filter" id="DataTables_Table_0_filter"><label>Tìm kiếm:
-                    <input type="text" name="search"
-                           aria-controls="DataTables_Table_0" <?php if (isset($_REQUEST['search'])) { ?> value="<?php echo $_REQUEST['search'] ?>" <?php } ?>>
+            <div class="dataTables_filter" id="DataTables_Table_0_filter">
+                <input type="text" name="search" style="padding: 6px" aria-controls="DataTables_Table_0" <?php if (isset($_REQUEST['search'])) { ?> value="<?php echo $_REQUEST['search'] ?>" <?php } ?>>
                     <input
-                        type="submit" aria-controls="DataTables_Table_0" value="Tìm"></label></div>
+                        type="submit" aria-controls="DataTables_Table_0" value="Tìm kiếm" class="form-control"></div>
 
         </form>
     </div>
-    <div class="span6">
-        <div class="dataTables_filter" id="DataTables_Table_0_filter">
-            <label for=""><a href="JobAdd.php"><img src="Image/list-add.png" alt=""/>Thêm mới ngành nghề đã làm ở Séc</a></label>
-
-        </div>
+    <div class="buttons pull-right">
+        <a class="btn btn-primary btn-icon glyphicons circle_plus" href="JobAdd.php"><i></i> Thêm mới</a>
     </div>
 </div>
 <div>
@@ -72,28 +67,28 @@
         id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
         <thead>
         <tr role="row">
-            <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
+            <th class="center" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
                 rowspan="1" colspan="1" style="width: 10px;"
-                aria-label="Rendering eng.: activate to sort column ascending">No.
+                aria-label="Rendering eng.: activate to sort column ascending">STT
             </th>
-            <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
+            <th class="center" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
                 rowspan="1" colspan="1" style="width: 350px;"
                 aria-label="Rendering eng.: activate to sort column ascending">Tên ngành nghề
             </th>
 
-            <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
+            <th class="center" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
                 rowspan="1" colspan="1" style="width: 100px;"
-                aria-label="Platform(s): activate to sort column ascending">Số thứ tự hiển thị
+                aria-label="Platform(s): activate to sort column ascending">Thứ tự
             </th>
-            <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
+            <th class="center" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
                 rowspan="1" colspan="1" style="width: 50px;"
                 aria-label="CSS grade: activate to sort column ascending">Trạng thái
             </th>
-            <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
+            <th class="center" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
                 rowspan="1" colspan="1" style="width: 50px;"
                 aria-label="CSS grade: activate to sort column ascending">Edit.
             </th>
-            <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
+            <th class="center" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0"
                 rowspan="1" colspan="1" style="width: 50px;"
                 aria-label="CSS grade: activate to sort column ascending">Delete.
             </th>
@@ -101,7 +96,8 @@
         </thead>
         <tbody role="alert" aria-live="polite" aria-relevant="all">
         <?php
-
+        $stt = $_REQUEST['start'] + 1;
+        $banghi = 0;
         $use2 = new Class_JobClass();
 
         if (isset($_REQUEST['search']) && isset($_REQUEST['search']) != "") {
@@ -131,13 +127,6 @@
 
         }
         $start = (isset($_GET['start']) && (int)$_GET['start'] >= 0) ? $_GET['start'] : 0;
-        if (isset($_REQUEST['start'])) {
-            $stt = $_REQUEST['start'] + 1;
-            $first = $_REQUEST['start'] + 1;
-        } else {
-            $stt = 1;
-            $first = 1;
-        }
         $use2->display = $display;
         $use2->start = $start;
         $selectArray = $use2->listJob();
@@ -145,13 +134,12 @@
             echo 'Khong tim thay';
         } else {
             foreach ($selectArray as $selectArrayItem) {
+                $banghi++;
                 ?>
                 <tr class="gradeA odd">
-                    <td style="vertical-align: middle; "><?php echo $stt++; ?></td>
+                    <td class="center" style="vertical-align: middle;"><?php echo $stt++; ?></td>
                     <td class=""><?php echo $selectArrayItem->job_name; ?></td>
-                    <!--                        <td class=" ">-->
-                    <?php //echo $selectArrayItem->group_status; ?><!--</td>-->
-                    <td class=" "><?php echo $selectArrayItem->job_number; ?></td>
+                    <td class="center" style="vertical-align: middle;"><?php echo $selectArrayItem->job_number; ?></td>
                     <td class=" center " id="ajax<?php echo $selectArrayItem->job_id; ?>">
                         <a onclick="state(<?php echo $selectArrayItem->job_id; ?>,<?php echo $selectArrayItem->job_id; ?>)">
                             <?php if ($selectArrayItem->job_status == 1) {
@@ -161,11 +149,11 @@
                             } ?>
                         </a>
                     </td>
-                    <td class="center "><a
+                    <td class="center" style="vertical-align: middle;"><a
                             href="JobEdit.php?id=<?php echo $selectArrayItem->job_id; ?>"
                             >Edit</a></td>
-                    <td class="center "><a
-                            href="JobDelAction.php?id=<?php echo $selectArrayItem->job_id; ?>"
+                    <td class="center" style="vertical-align: middle;"><a
+                            href="ObjectDelete.php?id=<?php echo $selectArrayItem->job_id; ?>&table=job&page=Job.php&table_id=job_id"
                             class="Del">Del</a></td>
                 </tr>
             <?php
@@ -174,6 +162,7 @@
         ?>
         </tr></tbody>
     </table>
+    <?php echo "Có " . $banghi . "/" . $records . " bản ghi" ?>
 
     <!--                        CHEN TRANG-->
     <div class="separator top form-inline small">
@@ -249,7 +238,7 @@
         }
         $.ajax({
             type: "POST",
-            url: "JobAjaxState.php?id=" + id + "&ne_state=" + ne_state,
+            url: "ObjectAjaxState.php?id=" + id + "&ne_state=" + ne_state + "&table=job&table_status=job_status&tableid=job_id",
             success: function (data) {
                 if (ne_state == 1) {
                     $('#ajax' + id).html(data);

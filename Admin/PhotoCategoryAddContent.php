@@ -16,7 +16,7 @@
         <div class="separator"></div>
     </div>
     <div class="form-news">
-        <form name="FaqEditForm" id="FaqEditForm" action="PhotoCategoryAddAction.php" method="post"
+        <form name="PhotoCatForm" id="PhotoCatForm" action="PhotoCategoryAddAction.php" method="post"
               enctype="multipart/form-data" accept-charset="utf-8">
 
             <div class="form">
@@ -36,15 +36,10 @@
                 </div>
                 <div class="form-group width">
                     <label>Trạng thái đăng trang chủ: </label>
-                    <select class="form-control" name="data[PhotoCat][status]" style="width: 150px">
-                        <option value="1">Đăng
-                        </option>
-                        <option value="0">Không đăng
-                        </option>
-                    </select>
+                    <input type="checkbox" value="1" name="data[PhotoCat][status]"/>
                 </div>
                 <div class="form-group width">
-                    <label>Upload Image: </label><input type="file" name="image" id="image"/>
+                    <label>Upload ảnh: </label><input type="file" name="image" id="image"/>
                 </div>
                 <div>
                     <input type="submit" value="Thêm mới danh mục ảnh "/>

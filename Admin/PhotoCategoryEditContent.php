@@ -1,4 +1,3 @@
-<?php include_once("../Class/PhotoCategoryClass.php"); ?>
 <div id="content">
     <ul class="breadcrumb">
         <li><a href="Index.php" class="glyphicons home"><i></i>Trang quản trị</a></li>
@@ -17,7 +16,7 @@
         <div class="separator"></div>
     </div>
     <div class="form-news">
-        <form name="FaqEditForm" id="FaqEditForm" action="PhotoCategoryEditAction.php?id=<?php echo $_REQUEST['id']?>" method="post"
+        <form name="PhotoCatForm" id="PhotoCatForm" action="PhotoCategoryEditAction.php?id=<?php echo $_REQUEST['id']?>" method="post"
               enctype="multipart/form-data" accept-charset="utf-8">
             <?php
             $photoCat = new Class_PhotoCategoryClass();
@@ -34,33 +33,26 @@
                 </div>
                 <div class="form-group width">
                     <label>Số thự tự hiển thị </label>
-                    <select class="form-control" name="data[PhotoCat][number]" style="width: 150px">
-                        <option value="1" <?php if ($item['photo_cat_number'] == 1){ ?>selected="selected" <?php } ?>>1
-                        </option>
-                        <option value="2" <?php if ($item['photo_cat_number'] == 2){ ?>selected="selected" <?php } ?>>2
-                        </option>
-                    </select>
+                    <input type="text" name="data[PhotoCat][number]" value="<?php echo $item['photo_cat_number']?>" class="form-control"/>
                 </div>
                 <div class="form-group width">
                     <label>Trạng thái đăng trang chủ: </label>
-                    <select class="form-control" name="data[PhotoCat][status]" style="width: 150px">
-                        <option value="1" <?php if ($item['photo_cat_status'] == 1){ ?>selected="selected" <?php } ?>>
-                            Đăng
-                        </option>
-                        <option value="0" <?php if ($item['photo_cat_status'] == 0){ ?>selected="selected" <?php } ?>>
-                            Không đăng
-                        </option>
-                    </select>
+                    <input type="checkbox" value="1" <?php if ($item['photo_cat_status'] == 1){?>checked="checked" <?php }?> name="data[PhotoCat][status]"/>
 
                 </div>
                 <div class="form-group width">
+                    <?php if ($item['photo_cat_avatar'] ==  null){?>
+                        <img src="Image/no-image.jpg" alt="" style="height: 100px"/>
+                    <?php } else {?>
                     <label>Ảnh hiện tại: </label>
                     <img src="Image/PhotoCategory/<?php echo $item['photo_cat_avatar'] ?>" alt=""/>
-                    <label>Thay thế ảnh khác:
+                    <?php }?>
+                    <br/>
+                    <label>Xóa ảnh cũ:
                         <input type="checkbox" name="data[PhotoCat][Image]" value="1"/>
                     </label>
                     <br/>
-                    <label>Chọn ảnh: </label><input type="file" name="image" id="image"/>
+                    <label>Đổi ảnh khác: </label><input type="file" name="image" id="image"/>
                     <input type="hidden" name="data[PhotoCat][oldImage]" value="<?php echo $item['photo_cat_avatar'] ?>"/>
 
                 </div>

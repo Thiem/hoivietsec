@@ -1,7 +1,3 @@
-<?php include_once("../Class/GroupListClass.php");
-include_once("../Class/MemberClass.php");
-include_once("../Class/JobClass.php");
-?>
 <div id="content">
 <ul class="breadcrumb">
     <li><a href="Index.php" class="glyphicons home"><i></i>Trang quản trị</a></li>
@@ -53,7 +49,7 @@ $item = $member->getMember();
            <?php if ($item['mem_gender'] == 1){ ?>checked="checked" <?php } ?>>
     <label for="MemberGioitinh1"> Nam </label>
     <input type="radio" name="data[Member][gioitinh]" id="MemberGioitinh2" value="2"
-           <?php if ($item['mem_gender'] == 0){ ?>checked="checked" <?php } ?>>
+           <?php if ($item['mem_gender'] == 2){ ?>checked="checked" <?php } ?>>
     <label for="MemberGioitinh2"> Nữ</label>
 </div>
 <div class="form-group ">
@@ -166,18 +162,26 @@ $item = $member->getMember();
 <!---->
 <!--    </div>-->
 <div class="form-group width">
-    <label>Ảnh hiện tại: </label>
+    <?php if ($item['mem_img'] == null) {
+        ?>
+        <img src="Image/no-image.jpg" alt="" style="height: 100px"/>
+        <br/>
+    <?php } else {?>
+        <br/>
+        <label>Ảnh hiện tại: </label>
     <img src="Image/MemberPhoto/<?php echo $item['mem_img'] ?>" alt=""/>
-    <label>Thay thế ảnh khác:
+   <?php }?>
+
+    <label>Xóa ảnh cũ:
         <input type="checkbox" name="data[Member][anhdaidien1]" value="1"/>
     </label>
     <br/>
-    <label>Chọn ảnh: </label><input type="file" name="image" id="image"/>
+    <label>Ảnh thay thế: </label><input type="file" name="image" id="image"/>
     <input type="hidden" name="data[Member][anhdaidien2]" value="<?php echo $item['mem_img'] ?>"/>
 
 </div>
 <div class="form-group width">
-    <label>Hội viên thuộc chi hội * </label> // lay tu bang chi hoi ra
+    <label>Hội viên thuộc chi hội * </label>
     <select class="form-control" name="data[Member][group_id]">
 
         <?php
@@ -206,50 +210,21 @@ $item = $member->getMember();
     <label for="MemberGioitinh2"> Chưa</label>
 </div>
 <div class="form-group width">
-    <label>Trạng thái đăng trang chủ: </label>
-    <select class="form-control" name="data[Member][status]" style="width: 150px">
-        <option value="1" <?php if ($item['mem_status'] == 1){ ?>selected="selected" <?php } ?>>
-            Đăng
-        </option>
-        <option value="0" <?php if ($item['mem_status'] == 0){ ?>selected="selected" <?php } ?>>
-            Không đăng
-        </option>
-    </select>
+    <label for="status">Trạng thái đăng trang chủ: </label>
+    <input type="checkbox" value="1" <?php if ($item['mem_status'] == 1){?>checked="checked" <?php }?> name="data[Member][status]" id="status"/>
 
 </div>
 <div class="form-group width">
-    <label>Số thứ tự hiển thị </label>
-    <select class="form-control" name="data[Member][number]" style="width: 150px">
-        <option value="1" <?php if ($item['mem_number'] == 1){ ?>selected="selected" <?php } ?>>
-            1
-        </option>
-        <option value="2" <?php if ($item['mem_number'] == 2){ ?>selected="selected" <?php } ?>>
-            2
-        </option>
-    </select>
-</div>
-<div class="form-group width">
-    <label>Thành viên ban chấp hành: </label>
-    <select class="form-control" name="data[Member][thanhvienchaphanh]" style="width: 150px">
-        <option value="1" <?php if ($item['mem_association'] == 1){ ?>selected="selected" <?php } ?>>
-            Có
-        </option>
-        <option value="0" <?php if ($item['mem_association'] == 0){ ?>selected="selected" <?php } ?>>
-            Không
-        </option>
-    </select>
+    <label for="thanhvienchaphanh">Thành viên ban chấp hành: <input type="checkbox" value="1" <?php if ($item['mem_association'] == 1){?>checked="checked" <?php }?> name="data[Member][thanhvienchaphanh]" id="thanhvienchaphanh"/></label>
 
 </div>
 <div class="form-group width">
-    <label>Số thứ tự hiển thị danh sách ban chấp hành </label>
-    <select class="form-control" name="data[Member][sothanhvienbanchaphanh]" style="width: 150px">
-        <option value="1" <?php if ($item['mem_association_number'] == 1){ ?>selected="selected" <?php } ?>>
-            1
-        </option>
-        <option value="2" <?php if ($item['mem_association_number'] == 2){ ?>selected="selected" <?php } ?>>
-            2
-        </option>
-    </select>
+    <label for="number">Số thứ tự hiển thị</label>
+    <input type="text" value="<?php echo $item['mem_number']?>" name="data[Member][number]" id="number" class="form-control" style="width: 340px"/>
+</div>
+<div class="form-group width">
+    <label for="association">Số thứ tự hiển thị danh sách ban chấp hành </label>
+    <input type="text" value="<?php echo $item['mem_association_number']?>" name="data[Member][sothanhvienbanchaphanh]" id="association" class="form-control" style="width: 340px"/>
 </div>
 <div>
     <input type="submit" value="Sửa danh thông tin thành viên "/>

@@ -25,9 +25,9 @@ class Class_GroupListClass
     public function listGroup()
     { // Hiển thị danh sach cac chi hoi
         if ($this->search != "") {
-            $sql = "select 	`group_id`, `group_name`, `group_number`, `group_status` from `group` where `group_name` LIKE '%" . $this->search . "%' order by `group_id` desc";
+            $sql = "select 	`group_id`, `group_name`, `group_number`, `group_status` from `group` where `group_name` LIKE '%" . $this->search . "%' order by `group_number` asc";
         } else {
-            $sql = "select 	`group_id`, `group_name`, `group_number`, `group_status` from `group` order by `group_id` desc limit " . $this->start . "," . $this->display . "";
+            $sql = "select 	`group_id`, `group_name`, `group_number`, `group_status` from `group` order by `group_number` asc limit " . $this->start . "," . $this->display . "";
         }
         $query = mysql_query($sql);
 //        echo $sql;

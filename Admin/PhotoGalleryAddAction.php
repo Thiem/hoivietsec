@@ -9,7 +9,12 @@ $photoGallery = new Class_PhotoGalleryClass();
 $photoGallery->photoGalleryName = $val['PhotoGallery']['name'];
 $photoGallery->photoCategoryId = $val['PhotoGallery']['photoCat'];
 $photoGallery->photoGalleryNumber = $val['PhotoGallery']['number'];
-$photoGallery->photoGalleryStatus = $val['PhotoGallery']['status'];
+if ($val['PhotoGallery']['status'] == 1) {
+    $photoGallery->photoGalleryStatus = 1;
+} else {
+    $photoGallery->photoGalleryStatus = 0;
+}
+$photoGallery->photoGalleryStatus =
 $photoGallery->photoGalleryImg = $_FILES['image']['name'];
 $photoGallery->addPhotoGallery();
-header("location: PhotoGalleryAdd.php");
+header("location: PhotoGallery.php");

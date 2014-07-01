@@ -1,4 +1,3 @@
-<?php include_once("Class/JobClass.php"); ?>
 <div id="content">
     <ul class="breadcrumb">
         <li><a href="Index.php" class="glyphicons home"><i></i>Trang quản trị</a></li>
@@ -17,7 +16,7 @@
         <div class="separator"></div>
     </div>
     <div class="form-news">
-        <form name="JobEditForm" id="JobEditForm" action="JobEditAction.php?id=<?php echo $_REQUEST['id'] ?>"
+        <form name="JobForm" id="JobForm" action="JobEditAction.php?id=<?php echo $_REQUEST['id'] ?>"
               method="post" enctype="multipart/form-data" accept-charset="utf-8">
             <?php
             $job= new Class_JobClass();
@@ -32,23 +31,13 @@
                 </div>
                 <div class="form-group width">
                     <label>Số thự tự hiển thị </label>
-                    <select class="form-control" name="data[Job][number]" style="width: 150px">
-                        <option value="1" <?php if ($item['job_number']==1){?> selected="selected" <?php }?>>1
-                        </option>
-                        <option value="2" <?php if ($item['job_number']==2){?> selected="selected" <?php }?>>2
-                        </option>
-                    </select>
+                    <input type="text" placeholder="Số thự tự hiển thị..." name="data[Job][number]" class="form-control" value="<?php  echo ($item['job_number'])?>"/>
                 </div><div class="form-group width">
-                    <label>Trạng thái đăng trang chủ: </label>
-                    <select class="form-control" name="data[Job][status]" style="width: 150px">
-                        <option value="1" <?php if ($item['job_status']==1){?> selected="selected" <?php }?>>Đăng
-                        </option>
-                        <option value="0" <?php if ($item['job_status']==0){?> selected="selected" <?php }?>>Không đăng
-                        </option>
-                    </select>
+                    <label for="status">Trạng thái đăng trang chủ:
+                    <input type="checkbox" value="1" name="data[Job][status]" id="status"  <?php if ($item['job_status']==1){?>checked="checked" <?php }?>/> </label>
                 </div>
                 <div>
-                    <input type="submit" value="Sủa thông tin công việc"/>
+                    <input type="submit" value="Sửa thông tin công việc"/>
                 </div>
             </div>
         </form>

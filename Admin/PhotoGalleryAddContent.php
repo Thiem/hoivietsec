@@ -1,5 +1,5 @@
 <?php
-include_once "Class/PhotoCategoryClass.php";
+//include_once "Class/PhotoCategoryClass.php";
 ?>
 <div id="content">
     <ul class="breadcrumb">
@@ -19,7 +19,7 @@ include_once "Class/PhotoCategoryClass.php";
         <div class="separator"></div>
     </div>
     <div class="form-news">
-        <form name="FaqEditForm" id="FaqEditForm" action="PhotoGalleryAddAction.php" method="post"
+        <form name="PhotoGallery" id="PhotoGallery" action="PhotoGalleryAddAction.php" method="post"
               enctype="multipart/form-data" accept-charset="utf-8">
             <?php
             $photoCategory= new Class_PhotoCategoryClass();
@@ -58,13 +58,8 @@ include_once "Class/PhotoCategoryClass.php";
                     </select>
                 </div>
                 <div class="form-group width">
-                    <label>Trạng thái đăng trang chủ: </label>
-                    <select class="form-control" name="data[PhotoGallery][status]" style="width: 150px">
-                        <option value="1">Đăng
-                        </option>
-                        <option value="0">Không đăng
-                        </option>
-                    </select>
+                    <label for="status">Trạng thái đăng trang chủ:
+                    <input type="checkbox" name="data[PhotoGallery][status]" value="1" id="status"/></label>
                 </div>
                 <div class="form-group width">
                     <label>Upload Image: </label><input type="file" name="image" id="image"/>

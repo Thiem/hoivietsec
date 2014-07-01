@@ -1,4 +1,3 @@
-<?php include_once("../Class/GroupListClass.php"); ?>
 <div id="content">
     <ul class="breadcrumb">
         <li><a href="Index.php" class="glyphicons home"><i></i>Trang quản trị</a></li>
@@ -17,7 +16,7 @@
         <div class="separator"></div>
     </div>
     <div class="form-news">
-        <form name="FaqEditForm" id="FaqEditForm" action="GroupListEditAction.php?id=<?php echo $_REQUEST['id'] ?>"
+        <form name="GroupForm" id="GroupForm" action="GroupListEditAction.php?id=<?php echo $_REQUEST['id'] ?>"
               method="post" enctype="multipart/form-data" accept-charset="utf-8">
             <?php
             $group = new Class_GroupListClass();
@@ -32,20 +31,10 @@
                 </div>
                 <div class="form-group width">
                     <label>Số thự tự hiển thị </label>
-                    <select class="form-control" name="data[Group][number]" style="width: 150px">
-                        <option value="1" <?php if ($item['group_number']==1){?> selected="selected" <?php }?>>1
-                        </option>
-                        <option value="2" <?php if ($item['group_number']==2){?> selected="selected" <?php }?>>2
-                        </option>
-                    </select>
+                    <input type="text" value="<?php echo $item['group_number']?>" name="data[Group][number]" class="form-control"/>
                 </div><div class="form-group width">
-                    <label>Trạng thái đăng trang chủ: </label>
-                    <select class="form-control" name="data[Group][status]" style="width: 150px">
-                        <option value="1" <?php if ($item['group_status']==1){?> selected="selected" <?php }?>>Đăng
-                        </option>
-                        <option value="0" <?php if ($item['group_status']==0){?> selected="selected" <?php }?>>Không đăng
-                        </option>
-                    </select>
+                    <label for="status">Trạng thái đăng trang chủ:
+                    <input type="checkbox" name="data[Group][status]" id="status" <?php if ($item['group_status']==1){?>checked="checked" <?php }?>/></label>
                 </div>
                 <div>
                     <input type="submit" value="Lưu kết quả "/>

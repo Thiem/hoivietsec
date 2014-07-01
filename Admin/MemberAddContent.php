@@ -1,5 +1,5 @@
 <?php
-include_once "../Class/PhotoCategoryClass.php";
+include_once "Class/PhotoCategoryClass.php";
 ?>
 <div id="content">
     <ul class="breadcrumb">

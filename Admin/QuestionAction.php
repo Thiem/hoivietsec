@@ -1,5 +1,5 @@
-<?php include_once("../Class/ClassConnectDatabase.php");
-include_once("../Class/FaqsClass.php");
+<?php include_once("Class/ClassConnectDatabase.php");
+include_once("Class/FaqsClass.php");
 $use1 = new Class_ConnectDatabase();
 $val =  $_REQUEST['data'];
 $question = new Class_FaqsClass();

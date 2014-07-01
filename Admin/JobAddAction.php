@@ -5,6 +5,10 @@ $val =  $_REQUEST['data'];
 $job = new Class_JobClass();
 $job->jobName = $val['Job']['name'];
 $job->jobNumber = $val['Job']['number'];
-$job->jobStatus = $val['Job']['status'];
+if ($val['Job']['status'] == 1) {
+    $job->jobStatus = 1;
+} else {
+    $job->jobStatus = 0;
+}
 $job->addJob();
 header("location: Job.php");

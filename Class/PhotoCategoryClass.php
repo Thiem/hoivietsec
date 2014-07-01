@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Thanh@401
@@ -28,9 +29,10 @@ class Class_PhotoCategoryClass
     public function listPhotoCategory()
     { // Hiển thị danh sach cac danh muc anh
         if ($this->search != "") {
-            $sql = "select 	photo_cat_id, photo_cat_title, photo_cat_avatar, photo_cat_number, photo_cat_status from photo_category where photo_cat_title LIKE '%" . $this->search . "%' order by photo_cat_id desc";
+            $sql = "select 	photo_cat_id, photo_cat_title, photo_cat_avatar, photo_cat_number, photo_cat_status from photo_category where photo_cat_title LIKE '%" . $this->search . "%' order by photo_cat_number asc";
         } else {
-            $sql = "select 	photo_cat_id, photo_cat_title, photo_cat_avatar, photo_cat_number, photo_cat_status from photo_category order by photo_cat_id desc limit ".$this->start.",".$this->display."";
+//            $sql = "select 	photo_cat_id, photo_cat_title, photo_cat_avatar, photo_cat_number, photo_cat_status from photo_category order by photo_cat_number asc limit ".$this->start.",".$this->display."";
+            $sql = "select 	photo_cat_id, photo_cat_title, photo_cat_avatar, photo_cat_number, photo_cat_status from photo_category order by photo_cat_number asc limit 0,100";
         }
         $query = mysql_query($sql);
 //        echo $sql;
@@ -47,6 +49,23 @@ class Class_PhotoCategoryClass
 
     }
 
+    public function showPhotoCategory()
+    {
+// hien thi danh mục ảnh ở trang chủ
+        $sql = "select 	photo_cat_id, photo_cat_title, photo_cat_avatar, photo_cat_number, photo_cat_status from photo_category where photo_cat_status = 1 order by photo_cat_number asc limit ".$this->start.",".($this->display)*3;
+
+        $query = mysql_query($sql);
+        $select = array();
+        while ($row = mysql_fetch_object($query)) {
+            $select[] = $row;
+        }
+        if (count($select) > 0) {
+            return $select;
+        } else {
+            return null;
+        }
+    }
+
     public function CountRows()
     {
         if ($this->search != "") {
@@ -57,6 +76,15 @@ class Class_PhotoCategoryClass
         $query = mysql_query($sql);
         $row = mysql_fetch_array($query, MYSQL_NUM);
         return $row[0];
+    }
+
+    public function countShowRow(){
+        {
+                $sql = "select count(photo_cat_id) from photo_category where photo_cat_status = 1";
+            $query = mysql_query($sql);
+            $row = mysql_fetch_array($query, MYSQL_NUM);
+            return $row[0];
+        }
     }
 
     public function UpdateState()
@@ -77,6 +105,7 @@ class Class_PhotoCategoryClass
         $query = mysql_query($sql);
 
     }
+
     public function onePhotoCategory()
     {
         $sql = "select photo_cat_title, photo_cat_number, photo_cat_status, photo_cat_avatar from photo_category where 	photo_cat_id = " . $this->photoCategoryId;
@@ -85,7 +114,8 @@ class Class_PhotoCategoryClass
         return $row;
     }
 
-    public function getPhotoCategoryTitle(){
+    public function getPhotoCategoryTitle()
+    {
         $sql = "select photo_cat_id, photo_cat_title from photo_category where photo_cat_status = 1 order by photo_cat_number asc";
         $query = mysql_query($sql);
         $select = array();
