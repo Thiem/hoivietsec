@@ -70,7 +70,7 @@ $use1 = new Class_ConnectDatabase();?>
         <li><a href="Contact.php">Liên hệ</a></li>
         <li>
         </li>
-        <li><a href="#">Sơ đồ trang</a></li>
+        <li><a href="SiteMap.php">Sơ đồ trang</a></li>
         <li class="search">
             <form accept-charset="utf-8" action="" method="post" id="NewSearchForm" controller="news">
                 <div style="display:none;"><input type="hidden" value="POST" name="_method"></div>
