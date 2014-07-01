@@ -74,7 +74,7 @@ if (isset($_REQUEST['data'])){
                 </th>
             </tr>
             <?php
-            $stt = $_REQUEST['start'] + 1;
+
             $banghi = 0;
             //BEGINING
             if (isset($_REQUEST['rows'])) {
@@ -95,6 +95,11 @@ if (isset($_REQUEST['data'])){
                 }
             }
             $start = (isset($_GET['start']) && (int)$_GET['start'] >= 0) ? $_GET['start'] : 0;
+            if (isset($_REQUEST['start'])) {
+                $stt = $_REQUEST['start'] + 1;
+            } else {
+                $stt = 1;
+            }
             $member->display = $display;
             $member->start = $start;
             $info = $member->showAllAssociation();
