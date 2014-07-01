@@ -4,6 +4,8 @@
 <script type="text/javascript" src="Js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="Js/jquery.easy-ticker.js"></script>
 <script type="text/javascript" src="Js/Main.js"></script>
+<script src="Js/jquery.validate.min.js"></script>
+<script src="Js/validate.form.js"></script>
 <?php include_once("Class/ClassConnectDatabase.php");
 include_once("Class/ClassTableNews.php");
 include_once("Class/ClassTableCatalog.php");
