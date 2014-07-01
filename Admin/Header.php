@@ -6,6 +6,15 @@ include_once("../Class/ClassTableNotice.php");
 include_once("../Class/ClassTableView.php");
 include_once("../Class/ClassTableClip.php");
 include_once("../Class/ClassTableLink.php");
+include_once("../Class/MemberClass.php");
+include_once("../Class/GroupListClass.php");
+include_once("../Class/JobClass.php");
+include_once("../Class/IntroductionClass.php");
+include_once("../Class/FaqsClass.php");
+include_once("../Class/ScheduleClass.php");
+include_once("../Class/PhotoCategoryClass.php");
+include_once("../Class/PhotoGalleryClass.php");
+include_once("../Class/FaqsClass.php");
 $use1 = new Class_ConnectDatabase();?>
 <div class="navbar main">
     <a href="index.php" class="appbrand"><span>Admin+ <span>lovely headline here</span></span></a>
