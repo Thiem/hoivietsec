@@ -1,0 +1,9 @@
+<?php
+include_once("../Class/ClassConnectDatabase.php");
+include_once("../Class/ClassTableClip.php");
+
+$use1 = new Class_ConnectDatabase();
+$use2 = new Class_ClassTableClip();
+$use2->id = $_REQUEST['id'];
+$use2->Delete();
+header("Location: Clip.php");

@@ -1,0 +1,93 @@
+.form-news{
+
+}
+.form{
+    /*width: 100%;*/
+    /*height: 100%;*/
+}
+.form div{
+    margin: 5px;
+}
+.editor{
+    width: 100%;
+    height: 450px;
+}
+label {
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+input[type="search"] {
+    box-sizing: border-box;
+}
+input[type="radio"], input[type="checkbox"] {
+    line-height: normal;
+    margin: 4px 0 0;
+}
+input[type="file"] {
+    display: block;
+}
+select[multiple], select[size] {
+    height: auto;
+}
+select optgroup {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+}
+input[type="file"]:focus, input[type="radio"]:focus, input[type="checkbox"]:focus {
+    outline: thin dotted;
+    outline-offset: -2px;
+}
+.width{
+    width: 50%;
+}
+.form-control {
+    background-color: #FFFFFF;
+    background-image: none;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555555;
+    display: block;
+    font-size: 14px;
+    height: 34px;
+    line-height: 1.42857;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    vertical-align: middle;
+    width: 98%;
+}
+.form-control:focus {
+    border-color: #66AFE9;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+    outline: 0 none;
+}
+.form-control:-moz-placeholder {
+    color: #999999;
+}
+.form-control::-moz-placeholder {
+    color: #999999;
+    opacity: 1;
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #EEEEEE;
+    cursor: not-allowed;
+}
+textarea.form-control {
+    height: auto;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+label.error {
+    color: red;
+    font-style: italic;
+    font-weight: normal;
+    margin-left: 200px;
+    width: 100%;
+}
+input.error, textarea.error, select.error {
+    border: 1px dotted red;
+}

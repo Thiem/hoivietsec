@@ -1,0 +1,64 @@
+body{
+    margin: 0 auto;
+}
+.header{
+    margin: 0 auto;
+}
+/*Style banner*/
+.logo{
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
+    width: 100%;
+    background-color: #367FA9;
+}
+.logo a{
+    display: block;
+    text-decoration: none;
+    font-family: 'Kaushan Script',cursive;
+    font-size: 20px;
+    font-weight: 500;
+    color: #F9F9F9;
+}
+/*Style menu page admin*/
+.sidebar {
+    margin-bottom: 5px;
+}
+.sidebar .sidebar-form input:focus {
+    border-color: rgba(0, 0, 0, 0) !important;
+    box-shadow: none;
+}
+.sidebar .sidebar-menu {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+.sidebar .sidebar-menu > li {
+    margin: 0;
+    padding: 0;
+}
+.sidebar .sidebar-menu > li > a {
+    display: block;
+    padding: 12px 5px 12px 15px;
+}
+.sidebar .sidebar-menu > li > a > .fa, .sidebar .sidebar-menu > li > a > .glyphicon, .sidebar .sidebar-menu > li > a > .ion {
+    width: 20px;
+}
+.sidebar .sidebar-menu .treeview-menu {
+    display: none;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+.sidebar .sidebar-menu .treeview-menu > li {
+    margin: 0;
+}
+.sidebar .sidebar-menu .treeview-menu > li > a {
+    display: block;
+    font-size: 14px;
+    margin: 0;
+    padding: 5px 5px 5px 15px;
+}
+.sidebar .sidebar-menu .treeview-menu > li > a > .fa, .sidebar .sidebar-menu .treeview-menu > li > a > .glyphicon, .sidebar .sidebar-menu .treeview-menu > li > a > .ion {
+    width: 20px;
+}
