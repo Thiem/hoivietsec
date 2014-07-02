@@ -96,7 +96,6 @@
         </thead>
         <tbody role="alert" aria-live="polite" aria-relevant="all">
         <?php
-        $stt = $_REQUEST['start'] + 1;
         $banghi = 0;
         $use2 = new Class_JobClass();
 
@@ -127,6 +126,11 @@
 
         }
         $start = (isset($_GET['start']) && (int)$_GET['start'] >= 0) ? $_GET['start'] : 0;
+        if (isset($_REQUEST['start'])) {
+            $stt = $_REQUEST['start'] + 1;
+        } else {
+            $stt = 1;
+        }
         $use2->display = $display;
         $use2->start = $start;
         $selectArray = $use2->listJob();

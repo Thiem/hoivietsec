@@ -14,6 +14,15 @@
         $member->memberYearStart = $val['Member']['tunam']['year'];
         $member->memberGroupId = $val['Member']['group_id'];
     }
+    if(!isset($val['Member']['group_id'])){
+        $val['Member']['group_id'] = 0;
+    }
+    if(!isset($val['Member']['gioitinh'])){
+        $val['Member']['gioitinh'] = 0;
+    }
+    if(!isset($val['Member']['tunam']['year'])){
+        $val['Member']['tunam']['year'] = 0;
+    }
     //KET THUC SEARCH
     //{
     ?>

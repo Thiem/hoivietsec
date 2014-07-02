@@ -17,7 +17,9 @@
 <?php
 $member = new Class_MemberClass();
 //THUC HIEN CAU LENH SQL DE SEARCH
-$val = $_REQUEST['data'];
+if(isset($_REQUEST['data'])){
+    $val = $_REQUEST['data']; // lay gia tri cua form sang.
+}
 // lay gia tri cua form sang.
 if (isset($val['Member']['timkiem']))
 {
@@ -25,6 +27,15 @@ if (isset($val['Member']['timkiem']))
     $member->memberGender = $val['Member']['gioitinh'];
     $member->memberYearStart = $val['Member']['tunam']['year'];
     $member->memberGroupId = $val['Member']['group_id'];
+}
+if(!isset($val['Member']['group_id'])){
+    $val['Member']['group_id'] = 0;
+}
+if(!isset($val['Member']['gioitinh'])){
+    $val['Member']['gioitinh'] = 0;
+}
+if(!isset($val['Member']['tunam']['year'])){
+    $val['Member']['tunam']['year'] = 0;
 }
 //KET THUC SEARCH
 //{
@@ -150,8 +161,6 @@ if (isset($val['Member']['timkiem']))
         </thead>
         <tbody role="alert" aria-live="polite" aria-relevant="all">
         <?php
-        $stt = $_REQUEST['start'] + 1;
-        //            $use2 = new Class_MemberClass();
         $banghi = 0;
 
         //        if (isset($_REQUEST['search']) && isset($_REQUEST['search']) != "") {
@@ -176,6 +185,11 @@ if (isset($val['Member']['timkiem']))
             }
         }
         $start = (isset($_GET['start']) && (int)$_GET['start'] >= 0) ? $_GET['start'] : 0;
+        if (isset($_REQUEST['start'])) {
+            $stt = $_REQUEST['start'] + 1;
+        } else {
+            $stt = 1;
+        }
         $member->display = $display;
         $member->start = $start;
 

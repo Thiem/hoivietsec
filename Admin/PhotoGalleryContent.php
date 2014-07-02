@@ -73,6 +73,9 @@
                 <?php
                 $photoCategory = new Class_PhotoCategoryClass();
                 $photoCat = $photoCategory->getPhotoCategoryTitle();
+                if (!isset($_REQUEST['id'])) {
+                    $_REQUEST['id'] = 0;
+                }
                 if ($photoCat == null) {
                     echo "Không có danh mục nào";
                 } else {
@@ -130,7 +133,6 @@
         </thead>
         <tbody role="alert" aria-live="polite" aria-relevant="all">
         <?php
-        $stt = $_REQUEST['start'] + 1;
         $use2 = new Class_PhotoGalleryClass();
 
         if (isset($_REQUEST['search']) && isset($_REQUEST['search']) != "") {
@@ -160,6 +162,11 @@
 
         }
         $start = (isset($_GET['start']) && (int)$_GET['start'] >= 0) ? $_GET['start'] : 0;
+        if (isset($_REQUEST['start'])) {
+            $stt = $_REQUEST['start'] + 1;
+        } else {
+            $stt = 1;
+        }
         $use2->display = $display;
         $use2->start = $start;
         if (isset($_REQUEST['id']) && $_REQUEST['id'] != 0) {
