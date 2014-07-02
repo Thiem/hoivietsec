@@ -4,6 +4,8 @@
 <script type="text/javascript" src="Js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="Js/jquery.easy-ticker.js"></script>
 <script type="text/javascript" src="Js/Main.js"></script>
+<script src="Js/jquery.validate.min.js"></script>
+<script src="Js/validate.form.js"></script>
 <?php include_once("Class/ClassConnectDatabase.php");
 include_once("Class/ClassTableNews.php");
 include_once("Class/ClassTableCatalog.php");
@@ -68,7 +70,7 @@ $use1 = new Class_ConnectDatabase();?>
         <li><a href="Contact.php">Liên hệ</a></li>
         <li>
         </li>
-        <li><a href="#">Sơ đồ trang</a></li>
+        <li><a href="SiteMap.php">Sơ đồ trang</a></li>
         <li class="search">
             <form accept-charset="utf-8" action="" method="post" id="NewSearchForm" controller="news">
                 <div style="display:none;"><input type="hidden" value="POST" name="_method"></div>

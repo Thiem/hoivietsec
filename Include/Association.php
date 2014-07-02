@@ -2,12 +2,10 @@
     <?php
     $member = new Class_MemberClass();
     //THUC HIEN CAU LENH SQL DE SEARCH
-    if(isset($_REQUEST['data'])){
-    $val = $_REQUEST['data']; // lay gia tri cua form sang.
-    }
-    //    if(!isset($val['Member']['gioitinh'])){
-    //        $val['Member']['gioitinh'] = 2;
-    //    }
+if (isset($_REQUEST['data'])){
+    $val = $_REQUEST['data'];
+}
+
     if (isset($val['Member']['timkiem'])) {
         $member->search = $val['Member']['tukhoa'];
         $member->memberGender = $val['Member']['gioitinh'];
